@@ -1,0 +1,5 @@
+/home/austin/dev/cpp/scratch/build/CMakeFiles/edit_cache.dir
+/home/austin/dev/cpp/scratch/build/CMakeFiles/rebuild_cache.dir
+/home/austin/dev/cpp/scratch/build/src/CMakeFiles/scratch.dir
+/home/austin/dev/cpp/scratch/build/src/CMakeFiles/edit_cache.dir
+/home/austin/dev/cpp/scratch/build/src/CMakeFiles/rebuild_cache.dir
