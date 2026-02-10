@@ -19,10 +19,12 @@ public:
     std::string get_error_code_as_string() const { return curl_easy_strerror(requestResult); }
 
     [[nodiscard]]
-    bool request_ok() const { return CURLE_OK == requestResult; }
+    std::string_view get_response() const { return responseBuffer; }
 
     [[nodiscard]]
-    std::string_view get_response() const { return buffer; }
+    bool request_ok() const { return CURLE_OK == requestResult; }
+
+    void slop_prompt(std::string const &message);
 
 private:
     struct CurlDeleter
@@ -33,12 +35,23 @@ private:
         }
     };
 
-    friend std::size_t curl_writer(char *ptr, std::size_t size, std::size_t nmemb, void *userdata);
+    struct HeaderDeleter
+    {
+        void operator() (curl_slist* ptr) const
+        {
+            if (ptr) { curl_slist_free_all(ptr); }
+        }
+    };
+
+    void curl_request_boilerplate();
 
 
-    std::string buffer;
+    std::string apiKeyHeaderSection{ "Authorization: Bearer " };
+    std::string postData;
+    std::string responseBuffer;
     CURLcode requestResult{ CURLE_OK };
     std::unique_ptr<CURL, CurlDeleter> curl{ curl_easy_init() };
+    std::unique_ptr<curl_slist, HeaderDeleter> header{ curl_slist_append(NULL, "Content-Type: application/json") };
 
 };
 
