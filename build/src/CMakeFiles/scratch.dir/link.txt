@@ -1,1 +1,0 @@
-/usr/bin/c++ -fsanitize=address -fsanitize=undefined -Wl,--dependency-file=CMakeFiles/scratch.dir/link.d CMakeFiles/scratch.dir/main.cpp.o CMakeFiles/scratch.dir/curlWrappers/curlRequestWrapper.cpp.o -o ../bin/scratch  /usr/lib/x86_64-linux-gnu/libcurl.so

@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/austin/dev/cpp/scratch/build/cmake_install.cmake",
-		"/home/austin/dev/cpp/scratch/build/src/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
